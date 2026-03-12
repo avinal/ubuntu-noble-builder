@@ -1,7 +1,11 @@
-description = "Ubuntu 24.04 Noble Numbat base image with buildpacks for Java, Node.js, .NET, Nginx, HTTPD and Procfile"
+description = "Ubuntu 24.04 Noble Numbat base image with buildpacks for Java, Go, Node.js, .NET, Nginx, HTTPD and Procfile"
 
 [build]
   image = "docker.io/paketobuildpacks/ubuntu-noble-build:0.0.63"
+
+[[buildpacks]]
+  uri = "docker://docker.io/paketobuildpacks/go:4.19.7"
+  version = "4.19.7"
 
 [[buildpacks]]
   uri = "docker://docker.io/paketobuildpacks/java-native-image:14.1.0"
@@ -29,6 +33,12 @@ description = "Ubuntu 24.04 Noble Numbat base image with buildpacks for Java, No
 
 [lifecycle]
   version = "0.21.5"
+
+[[order]]
+
+  [[order.group]]
+    id = "paketo-buildpacks/go"
+    version = "4.19.7"
 
 [[order]]
 
